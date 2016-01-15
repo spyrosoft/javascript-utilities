@@ -7,6 +7,8 @@ var Utilities = {
 		18 : 'alt',
 		91 : 'meta',
 		20 : 'capslock',
+		8 : 'backspace',
+		9 : 'tab',
 		189 : '-',
 		187 : '=',
 		219 : '[',
@@ -62,6 +64,12 @@ var Utilities = {
 			return String.fromCharCode( keyCode + alphaOffset );
 		}
 		
+		if ( typeof this.keyCodeLookupTable[ keyCode ] === 'undefined' ) {
+			return null;
+		} else {
+			return this.keyCodeLookupTable[ keyCode ];
+		}
+		
 		return null;
 	},
 	
@@ -71,6 +79,17 @@ var Utilities = {
 		if ( keyCode <= this.keyCodeAlphaMax && keyCode >= this.keyCodeAlphaMin ) {
 			return String.fromCharCode( keyCode );
 		}
+		
+		if ( typeof this.keyCodeShiftLookupTable[ keyCode ] === 'undefined' ) {
+			if ( typeof this.keyCodeLookupTable[ keyCode ] === 'undefined' ) {
+				return null;
+			} else {
+				return this.keyCodeLookupTable[ keyCode ];
+			}
+		} else {
+			return this.keyCodeShiftLookupTable[ keyCode ];
+		}
+		
 		return null;
 	},
 	
