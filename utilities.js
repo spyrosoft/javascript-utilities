@@ -167,14 +167,6 @@ var Utilities = {
 		return objectsAreEqual;
 	},
 	
-	getMouseXYWithinElement : function( domElement, event ) {
-		var x, y;
-		var domElementOffset = $( domElement ).offset();
-		x = event.pageX - domElementOffset.left;
-		y = event.pageY - domElementOffset.top;
-		return { 'x': x, 'y': y };
-	},
-	
 	requestBrowserFullScreen : function() {
 		var body = document.body;
 		if( body.requestFullScreen ) { body.requestFullScreen(); }	
@@ -183,5 +175,4 @@ var Utilities = {
 	}
 };
 
-if ( typeof $ === 'undefined' ) { function $() { throw "jQuery is required for this Utility."; } }
 if ( typeof console === 'undefined' ) { var console = { log : function() {} }; }
