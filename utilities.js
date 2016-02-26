@@ -213,7 +213,7 @@ var Utilities = {
 	
 	convertDollarsToCents : function( dollars ) {
 		if ( parseFloat( dollars ) != dollars ) { throw "The argument provided was not a dollar amount: " + dollars; }
-		return Math.ceil( Math.parseFloat( dollars ) * 100 );
+		return Math.ceil( parseFloat( dollars ) * 100 );
 	}
 };
 
