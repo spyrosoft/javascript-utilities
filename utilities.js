@@ -172,6 +172,43 @@ var Utilities = {
 		if( body.requestFullScreen ) { body.requestFullScreen(); }	
 		else if( body.webkitRequestFullScreen ) { body.webkitRequestFullScreen(); }	
 		else if( body.mozRequestFullScreen ) { body.mozRequestFullScreen(); }
+	},
+	
+	formatHumanReadableDollars : function( number ) {
+		if ( parseFloat( number ) != number ) { throw "The argument provided was not a number: " + number; }
+		var numberString = number.toString();
+		if ( ! numberString.match( /\./ ) ) { numberString += '.00'; }
+		var dollarsAndCents = numberString.split( '.' );
+		if ( dollarsAndCents[ 1 ].length > 2 ) {
+			// It's not very obvious what's happening here.
+			// We know that we have more digits than we need, so we want to round up:
+			// We take the first three digits
+			// Convert them to an integer, divide by 10, and take the ceiling
+			dollarsAndCents[ 1 ]
+				= Math.ceil(
+					parseInt(
+						dollarsAndCents[ 1 ]
+							.substring( 0, 3 )
+					) / 10
+				).toString();
+		}
+		
+		while ( dollarsAndCents[ 1 ].length < 2 ) { dollarsAndCents[ 1 ] += '0'; }
+		
+		if ( dollarsAndCents[ 0 ].length > 3 ) {
+			var dollars = dollarsAndCents[ 0 ];
+			var newDollarsAndCents = '';
+			for ( var i = 0; i < dollars.length; i++ ) {
+				if ( i != 0 && i % 3 === 0 ) {
+					newDollarsAndCents = ',' + newDollarsAndCents;
+				}
+				newDollarsAndCents
+					= dollars[ dollars.length - 1 - i ]
+					+ newDollarsAndCents;
+			}
+			dollarsAndCents[ 0 ] = newDollarsAndCents;
+		}
+		return '$' + dollarsAndCents[ 0 ] + '.' + dollarsAndCents[ 1 ];
 	}
 };
 
