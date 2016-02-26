@@ -209,6 +209,11 @@ var Utilities = {
 			dollarsAndCents[ 0 ] = newDollarsAndCents;
 		}
 		return '$' + dollarsAndCents[ 0 ] + '.' + dollarsAndCents[ 1 ];
+	},
+	
+	convertDollarsToCents : function( dollars ) {
+		if ( parseFloat( dollars ) != dollars ) { throw "The argument provided was not a dollar amount: " + dollars; }
+		return Math.ceil( Math.parseFloat( dollars ) * 100 );
 	}
 };
 
