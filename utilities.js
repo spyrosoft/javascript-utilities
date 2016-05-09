@@ -1,3 +1,5 @@
+// Source: https://github.com/spyrosoft/javascript-utilities
+
 var Utilities = {
 	keyCodeLookupTable : {
 		13 : 'enter',
