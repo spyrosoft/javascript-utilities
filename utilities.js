@@ -217,10 +217,11 @@ var Utilities = {
 	},
 	
 	parseGetParameters : function() {
-		var full_url = window.location.href;
-		var get_parameter_string = full_url.substring( full_url.indexOf('?') + 1, full_url.length );
-		var get_parameters_and_values = get_parameter_string.split( '?' );
 		var get_parameters = {};
+		var full_url = window.location.href;
+		if ( full_url.indexOf('?') === -1 ) { return get_parameters; }
+		var get_parameter_string = full_url.substring( full_url.indexOf('?') + 1, full_url.length );
+		var get_parameters_and_values = get_parameter_string.split( '&' );
 		for ( var i in get_parameters_and_values ) {
 			var get_parameter_and_value = get_parameters_and_values[ i ].split( '=' );
 			var get_parameter = decodeURIComponent( get_parameter_and_value[ 0 ] );
