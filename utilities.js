@@ -177,7 +177,7 @@ var Utilities = {
 	},
 	
 	formatHumanReadableDollars : function( number ) {
-		if ( parseFloat( number ) != number ) { throw "The argument provided was not a number: " + number; }
+		if ( parseFloat( number ) != number ) { throw 'The argument provided was not a number: ' + number; }
 		var numberString = number.toString();
 		if ( ! numberString.match( /\./ ) ) { numberString += '.00'; }
 		var dollarsAndCents = numberString.split( '.' );
@@ -214,15 +214,15 @@ var Utilities = {
 	},
 	
 	convertDollarsToCents : function( dollars ) {
-		if ( parseFloat( dollars ) != dollars ) { throw "The argument provided was not a dollar amount: " + dollars; }
+		if ( parseFloat( dollars ) != dollars ) { throw 'The argument provided was not a dollar amount: ' + dollars; }
 		return Math.ceil( parseFloat( dollars ) * 100 );
 	},
 	
 	parseGetParameters : function() {
 		var get_parameters = {};
 		var full_url = window.location.href;
-		if ( full_url.indexOf('?') === -1 ) { return get_parameters; }
-		var get_parameter_string = full_url.substring( full_url.indexOf('?') + 1, full_url.length );
+		if ( full_url.indexOf( '?' ) === -1 ) { return get_parameters; }
+		var get_parameter_string = full_url.substring( full_url.indexOf( '?' ) + 1, full_url.length );
 		var get_parameters_and_values = get_parameter_string.split( '&' );
 		for ( var i in get_parameters_and_values ) {
 			var get_parameter_and_value = get_parameters_and_values[ i ].split( '=' );
