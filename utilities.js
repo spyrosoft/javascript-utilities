@@ -101,11 +101,6 @@ var Utilities = {
 		return this.keyCodeLookupTable[ keyCode ] === 'enter';
 	},
 	
-	//Not memory efficient
-	compareArrays : function( array1, array2 ) {
-		return array1.join( '~~' ) === array2.join( '~~' );
-	},
-	
 	//TODO: Is this useful for debugging, or does it obfuscate where the error originated?
 	customError : function( errorName, errorMessage ) {
 		throw {
@@ -167,6 +162,11 @@ var Utilities = {
 		}
 		
 		return objectsAreEqual;
+	},
+	
+	//Not memory efficient
+	arrayEqual : function( array1, array2 ) {
+		return array1.join( '~~' ) === array2.join( '~~' );
 	},
 	
 	requestBrowserFullScreen : function() {
