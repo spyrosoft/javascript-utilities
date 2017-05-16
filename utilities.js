@@ -205,14 +205,6 @@ var Utilities = {
 		return get_parameters;
 	},
 
-	escapeHTML : function(unescaped) {
-		return String(unescaped)
-			.replace(/&/g, '&amp;')
-			.replace(/</g, '&lt;')
-			.replace(/>/g, '&gt;')
-			.replace(/"/g, '&quot;');
-	},
-
 	parseJSON : function(json_to_parse) {
 		try {
 			var parsed = JSON.parse(json_to_parse);
