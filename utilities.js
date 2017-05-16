@@ -118,22 +118,29 @@ var Utilities = {
 	},
 	
 	rgbToSixHex : function( rgb ) {
-		var sixHex = '';
-		sixHex += this.decimalToHex( rgb[ 0 ] );
-		sixHex += this.decimalToHex( rgb[ 1 ] );
-		sixHex += this.decimalToHex( rgb[ 2 ] );
+		var rHex = this.padStringFront( this.decimalToHex( rgb[ 0 ] ), '0', 2 );
+		var gHex = this.padStringFront( this.decimalToHex( rgb[ 1 ] ), '0', 2 );
+		var bHex = this.padStringFront( this.decimalToHex( rgb[ 2 ] ), '0', 2 );
+		var sixHex = rHex + gHex + bHex;
 		return sixHex;
 	},
 	
-	decimalToHex : function( decimal, padLength ) {
-		var hex = decimal.toString( 16 );
-		if ( ! padLength ) { padLength = 2; }
-		while ( hex.length < padLength ) { hex = '0' + hex; }
-		return hex;
+	decimalToHex : function( decimal ) {
+		if ( typeof decimal !== 'number' ) { return undefined; }
+		return decimal.toString( 16 );
 	},
 	
-	hexToDecimal : function( hex, padLength ) {
+	hexToDecimal : function( hex ) {
 		return parseInt( hex, 16 );
+	},
+	
+	padStringFront : function( string, padWith, padLength ) {
+		if ( typeof string !== 'string' ) { return undefined; }
+		var paddedString = string;
+		while ( paddedString.length < padLength ) {
+			paddedString = padWith + paddedString;
+		}
+		return paddedString;
 	},
 	
 	isInteger : function( integerToTest ) {
@@ -192,7 +199,7 @@ var Utilities = {
 		var get_parameter_string = full_url.substring( full_url.indexOf( '?' ) + 1, full_url.length );
 		return this.parseGetParameters(get_parameter_string);
 	},
-
+	
 	parseGetParameters : function(get_parameter_string) {
 		var get_parameters = {};
 		var get_parameters_and_values = get_parameter_string.split( '&' );
@@ -204,7 +211,7 @@ var Utilities = {
 		}
 		return get_parameters;
 	},
-
+	
 	parseJSON : function(json_to_parse) {
 		try {
 			var parsed = JSON.parse(json_to_parse);
