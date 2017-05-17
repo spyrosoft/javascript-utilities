@@ -145,7 +145,7 @@ var Utilities = {
 	
 	strictInteger : function( input ) {
 		if ( typeof input === 'number' ) {
-			if ( parseFloat(input) === parseInt( input ) ) { return input; }
+			if ( parseFloat( input ) === parseInt( input ) ) { return input; }
 			return undefined;
 		}
 		if ( typeof input === 'string' && input === parseInt( input ).toString() ) {
@@ -155,7 +155,7 @@ var Utilities = {
 	},
 	
 	strictFloat : function( input ) {
-		if ( isFinite( input ) ) { return parseFloat(input); }
+		if ( isFinite( input ) ) { return parseFloat( input ); }
 		return undefined;
 	},
 	
@@ -206,10 +206,10 @@ var Utilities = {
 		var full_url = window.location.href;
 		if ( full_url.indexOf( '?' ) === -1 ) { return {}; }
 		var get_parameter_string = full_url.substring( full_url.indexOf( '?' ) + 1, full_url.length );
-		return this.parseGetParameters(get_parameter_string);
+		return this.parseGetParameters( get_parameter_string );
 	},
 	
-	parseGetParameters : function(get_parameter_string) {
+	parseGetParameters : function( get_parameter_string ) {
 		var get_parameters = {};
 		var get_parameters_and_values = get_parameter_string.split( '&' );
 		for ( var i in get_parameters_and_values ) {
@@ -221,9 +221,9 @@ var Utilities = {
 		return get_parameters;
 	},
 	
-	parseJSON : function(json_to_parse) {
+	parseJSON : function( json_to_parse ) {
 		try {
-			var parsed = JSON.parse(json_to_parse);
+			var parsed = JSON.parse( json_to_parse );
 			return parsed;
 		} catch(e) {}
 		return undefined;
