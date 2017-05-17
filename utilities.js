@@ -143,8 +143,23 @@ var Utilities = {
 		return paddedString;
 	},
 	
-	isInteger : function( integerToTest ) {
-		return integerToTest === parseInt( integerToTest );
+	strictInteger : function( input ) {
+		if ( typeof input === 'number' ) {
+			if ( input === parseInt( input ) ) { return input; }
+			return undefined;
+		}
+		if ( typeof input === 'string' && input === parseInt( input ).toString() ) {
+			return parseInt( input );
+		}
+		return undefined;
+	},
+	
+	strictFloat : function( input ) {
+		if ( typeof input === 'number' ) { return input; }
+		if ( typeof input === 'string' && input === parseFloat( input ).toString() ) {
+			return parseFloat( input );
+		}
+		return undefined;
 	},
 	
 	objectEqual : function( object1, object2 ) {
