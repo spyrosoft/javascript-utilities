@@ -156,9 +156,6 @@ var Utilities = {
 	
 	strictFloat : function( input ) {
 		if ( isFinite( input ) ) { return parseFloat(input); }
-		if ( typeof input === 'string' && input === parseFloat( input ).toString() ) {
-			return parseFloat( input );
-		}
 		return undefined;
 	},
 	
