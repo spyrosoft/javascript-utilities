@@ -1,0 +1,90 @@
+!!!
+%html
+  %head
+    %title JS Utilities Demo
+    %script{src: 'utilities.js'}
+    %style{type: 'text/css'}
+      html { font-size: 20px; }
+      body { margin-bottom: 4rem; }
+      hr { margin: 2rem auto; }
+      input { font-size: inherit; }
+      \.content { max-width: 30rem; margin: 0 auto; }
+  %body
+    .content
+      %h1 Utilities Demo
+      %p
+        Please open
+        %a{href: 'demo.js', target: '_blank'} demo.js
+        to see the code in action
+      %hr
+      %h2 Check for enter on keydown
+      %p Is the keydown event the Enter key?
+      %p#keydown-is-enter-output
+      %input#keydown-is-enter
+      %hr
+      
+      %h2 Check if a keydown is any specified key
+      %p Is the keydown event #?
+      %p#keydown-is-hash-output
+      %input#keydown-is-hash
+      %p Belt.keyCodeLookup('...') can also be used to check for 'escape', 'shift', 'control', 'backspace', 'tab', etc. Test it out:
+      %input#key-code-lookup
+      #key-code-lookup-output
+      %hr
+      
+      %h2 Decimal to Hex and Back
+      %p Decimal
+      %input#decimal-to-hex-decimal
+      %p Hex
+      %input#decimal-to-hex-hex
+      %hr
+      
+      %h2 Check if a variable is an integer
+      %p
+        a
+        %span#a-is-integer-output
+      %button#a-is-integer Check
+      %p
+        4
+        %span#4-is-integer-output
+      %button#4-is-integer Check
+      %p
+        4.5
+        %span#4-point-5-is-integer-output
+      %button#4-point-5-is-integer Check
+      %hr
+      
+      %h2 Check if two objects are the same
+      %p 1: { string: "a", integerArray: [1, 2], nested: { a: "a" } }
+      %p 2: { string: "a", integerArray: [1, 2], nested: { a: "a" } }
+      %p#object-equal-1-output
+      %button#object-equal-1 Check
+      %p 1: { string: "a", integerArray: [1, 2], nested: { a: "a" } }
+      %p 2: { string: "a", integerArray: [1, 3], nested: { a: "a" } }
+      %p#object-equal-2-output
+      %button#object-equal-2 Check
+      %hr
+      
+      %h2 Format Human Readable Dollars
+      %input#format-human-readable-dollars
+      #format-human-readable-dollars-output
+      %hr
+      
+      %h2 Parse Get Parameters
+      %p For example:
+      %p zoom-level=266&canvas-width=800&canvas-height=834&x=-0.75&y=0&max-iterations=200&gradient-colors=000000ff0000ff9000000000&fractal=leaves
+      %input#parse-get-parameters
+      %p#parse-get-parameters-output
+      %hr
+      
+      %h2 Parse Get Parameters From URL
+      %a{href: '?zoom-level=266&canvas-width=800&canvas-height=834&x=-0.75&y=0&max-iterations=200&gradient-colors=000000ff0000ff9000000000&fractal=leaves'} Example
+      %p#parse-get-parameters-from-url-output
+      %button#parse-get-parameters-from-url Parse
+      %hr
+      
+      %h2 Parse JSON
+      %input#parse-json
+      %p#parse-json-output
+
+    %script{src: 'demo.js'}
