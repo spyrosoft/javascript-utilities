@@ -174,13 +174,6 @@ var Utilities = {
 		return this.objectEqual( array1, array2 );
 	},
 	
-	requestBrowserFullScreen : function() {
-		var body = document.body;
-		if( body.requestFullScreen ) { body.requestFullScreen(); }	
-		else if( body.webkitRequestFullScreen ) { body.webkitRequestFullScreen(); }	
-		else if( body.mozRequestFullScreen ) { body.mozRequestFullScreen(); }
-	},
-	
 	formatHumanReadableDollars : function( number ) {
 		if ( parseFloat( number ) != number ) { throw 'The argument provided was not a number: ' + number; }
 		return '$' + number.toFixed( 2 );
