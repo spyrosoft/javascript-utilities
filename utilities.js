@@ -161,8 +161,7 @@ var Utilities = {
 			if ( typeof object2[ key ] === 'object' ) {
 				objectsAreEqual = this.objectEqual( object1[ key ], object2[ key ] );
 				if ( ! objectsAreEqual ) { break; }
-			}
-			if ( object1[ key ] !== object2[ key ] ) {
+			} else if ( object1[ key ] !== object2[ key ] ) {
 				objectsAreEqual = false;
 				break;
 			}
