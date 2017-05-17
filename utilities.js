@@ -145,7 +145,7 @@ var Utilities = {
 	
 	strictInteger : function( input ) {
 		if ( typeof input === 'number' ) {
-			if ( input === parseInt( input ) ) { return input; }
+			if ( parseFloat(input) === parseInt( input ) ) { return input; }
 			return undefined;
 		}
 		if ( typeof input === 'string' && input === parseInt( input ).toString() ) {
@@ -187,12 +187,18 @@ var Utilities = {
 	},
 	
 	formatHumanReadableDollars : function( number ) {
-		if ( parseFloat( number ) != number ) { throw 'The argument provided was not a number: ' + number; }
-		return '$' + number.toFixed( 2 );
+		number = this.strictFloat( number );
+		if ( number === undefined ) { throw 'The argument provided was not a number: ' + number; }
+		number = number.toFixed( 2 ).split( '.' );
+		return '$'
+			+ number[ 0 ].replace( /(\d)(?=(\d{3})+$)/g, '$1,' )
+			+ '.'
+			+ number[ 1 ];
 	},
 	
 	convertDollarsToCents : function( dollars ) {
-		if ( parseFloat( dollars ) != dollars ) { throw 'The argument provided was not a dollar amount: ' + dollars; }
+		dollars = this.strictFloat( dollars );
+		if ( dollars !== undefined ) { throw 'The argument provided was not a dollar amount: ' + dollars; }
 		return Math.ceil( parseFloat( dollars ) * 100 );
 	},
 	
