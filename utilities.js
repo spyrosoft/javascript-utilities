@@ -170,9 +170,8 @@ var Utilities = {
 		return objectsAreEqual;
 	},
 	
-	//Not memory efficient
 	arrayEqual : function( array1, array2 ) {
-		return array1.join( '~~' ) === array2.join( '~~' );
+		return this.objectEqual( array1, array2 );
 	},
 	
 	requestBrowserFullScreen : function() {
